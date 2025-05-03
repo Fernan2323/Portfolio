@@ -17,34 +17,38 @@ import pokememoImg from "../assets/pokememo.webp"
 
 <main class="bg-gradient-to-br from-black via-neutral-950 to-zinc-950 w-full min-h-screen flex flex-col items-center pt-[140px]">
   
-<header class="w-full relative z-10 ">
+<header class="w-full relative">
 <NavBar />
 </header>
 
 <section class="w-full z-0 relative flex items-center justify-center h-[100vh] pb-[200px]">
 
-  <!-- Imagen de fondo apagada -->
-  <img class="absolute object-cover top-0 left-0 w-full h-[450px] sm:h-[700px] z-0" src={bgImage.src} alt="imagen de fondo" />
+ <!-- Imagen de fondo -->
+<img class="absolute object-cover top-0 left-0 w-full h-[250px] sm:h-[700px] z-0" src={bgImage.src} alt="imagen de fondo" />
 
-  <!-- Capa oscura -->
-  <div class="absolute top-0 left-0 w-full h-[700px] bg-black/10 z-0"></div>
+<!-- Contenedor principal -->
+<div class="absolute top-0 left-0 w-full h-[250px] sm:h-[700px] z-10 flex items-center justify-center xl:-left-[200px] px-4">
 
-  <!-- Contenedor principal -->
-  <div class="relative z-10 flex flex-col xl:flex-row items-center justify-center w-full px-4 ">
+  <!-- Texto centrado -->
+  <div class="text-center sm:max-w-[600px]">
+    <h1 class="text-[40px] sm:text-[80px] xl:text-[90px] text-white font-bold font-ibm leading-tight mt-10">
+      ¿Necesitas un sitio web para tu negocio?
+      <span class="relative w-full flex justify-center">
+        <Arrow class="w-[40px] h-[40px] sm:w-[80px] sm:h-[80px] text-white mt-4 animate-bounce-down" />
+      </span>
+    </h1>
+  </div>
 
-    <!-- Texto -->
-    <div class="text-center xl:text-left sm:max-w-[600px]">
-      <h1 class="text-[38px] sm:text-[80px] xl:text-[90px] text-white font-bold font-ibm leading-tight ">
-        ¿Necesitas un sitio web para tu negocio?
-        <span class="text-center w-full flex justify-center relative">
-          <Arrow class=" w-[40px] h-[40px] sm:w-[80px] absolute top-[100px] xl:right-0 sm:h-[80px] text-white icon icon-tabler icons-tabler-outline icon-tabler-arrow-badge-down animate-bounce-down " />
-        </span>
-      </h1>
-    </div>
+</div>
+
+
+
+
+    
 
     <!-- Avatar (Video) -->
     <div class="hidden xl:block relative w-full max-w-[500px] pt-[70px] mr-10">
-      <div class="relative flex justify-center">
+      <div class="absolute -top-[200px] -right-[300px] ">
         <video
           autoplay
           muted

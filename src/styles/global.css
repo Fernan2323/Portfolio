@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Esto debe ir FUERA de @layer */
+@keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+  
+
+/* ✅ Estas clases personalizadas sí van dentro de @layer components */
+@layer components {
+  .icon-style {
+    @apply w-[70px] h-[60px] sm:w-[105px] sm:h-[95px];
+  }
+  .icon-label {
+    @apply text-white text-center font-semibold text-sm sm:text-base;
+  }
+  .icon-item {
+    @apply gap-y-3 flex flex-col items-center;
+  }
+}
+
+@layer utilities {
+  @keyframes vibrate-pause {
+    0%, 20% {
+      transform: translateX(0);
+    }
+    2%, 6%, 10%, 14%, 18% {
+      transform: translateX(-2px);
+    }
+    4%, 8%, 12%, 16% {
+      transform: translateX(2px);
+    }
+    21%, 100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-vibrate-pause {
+    animation: vibrate-pause 2s linear infinite;
+  }
+
+  @keyframes bounce-down {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(12px);
+    }
+  }
+
+  .animate-bounce-down {
+    animation: bounce-down .5s ease-in-out infinite;
+  }
+}
+
+
+
+

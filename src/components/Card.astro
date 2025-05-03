@@ -1,0 +1,33 @@
+---
+import logo from '../assets/astro.svg';
+import Link from './icons/Link.astro'
+const { title, text, link, repo, img } = Astro.props;
+
+---
+<div class="w-full max-w-[800px] bg-gray-900 text-white rounded-2xl overflow-hidden shadow-lg p-4 flex flex-col sm:flex-row gap-4 items-start mt-5">
+  <!-- Imagen -->
+  <img src={img} alt="Imagen de la card" class="w-full sm:w-1/3 h-48 object-cover mt-3 rounded-xl" />
+
+  <!-- Contenido -->
+  <div class="flex-1 py-3 sm:py-5 sm:ml-5">
+    <h2 class="text-[24px] sm:text-[30px] font-bold">{title}</h2>
+    <slot />
+    <p class="mt-4 text-gray-300">{text}</p>
+
+    <!-- Enlaces -->
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-5 mt-5">
+      <a class="flex items-center hover:text-blue-500 cursor-pointer" href={link} target="_blank">
+        <Link class="w-[24px] mr-2" />
+        {title}
+      </a>
+
+      <a class="flex items-center hover:text-blue-500 cursor-pointer" href={repo} target="_blank">
+        <Link class="w-[24px] mr-2" />
+        Repositorio
+      </a>
+    </div>
+  </div>
+</div>
+
+
+    

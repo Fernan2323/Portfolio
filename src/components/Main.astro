@@ -3,8 +3,8 @@ import AboutMe from "../components/AboutMe.astro";
 import Card from "../components/Card.astro";
 import Code from "./icons/Code.astro";
 import Skills from "./Skills.astro";
-import NavBar from "./NavBar.astro";
-import bgImage from "../assets/bg-image-4.webp"
+import NavBar from "./NavBar.jsx";
+import bgImage from "../assets/bg-image-2.webp"
 import Html from './icons/Html.astro'
 import Css from './icons/Css.astro'
 import Arrow from './icons/Arrow.astro'
@@ -12,19 +12,25 @@ import Javascript from './icons/Js.astro'
 import Contact from "./Contact.astro";
 import soyFernando from "../assets/soy-fernando.svg"
 import pokememoImg from "../assets/pokememo.webp"
-
 ---
 
 <main class="bg-gradient-to-br from-black via-neutral-950 to-zinc-950 w-full min-h-screen flex flex-col items-center pt-[140px]">
   
 <header class="w-full relative">
-<NavBar />
+<NavBar client:load />
 </header>
 
-<section class="w-full z-0 relative flex items-center justify-center h-[100vh] pb-[200px]">
+<section class="w-full z-0 relative flex items-center justify-center h-[50vh] sm:h-[100vh]">
 
  <!-- Imagen de fondo -->
-<img class="absolute object-cover top-0 left-0 w-full h-[250px] sm:h-[700px] z-0" src={bgImage.src} alt="imagen de fondo" />
+ <div class="absolute top-0 left-0 w-full h-[250px] sm:h-[700px] z-0">
+  <img
+    class="w-full h-full object-cover"
+    src={bgImage.src}
+    alt="imagen de fondo"
+  />
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+</div>
 
 <!-- Contenedor principal -->
 <div class="absolute top-0 left-0 w-full h-[250px] sm:h-[700px] z-10 flex items-center justify-center xl:-left-[200px] px-4">
@@ -41,14 +47,9 @@ import pokememoImg from "../assets/pokememo.webp"
 
 </div>
 
-
-
-
-    
-
     <!-- Avatar (Video) -->
     <div class="hidden xl:block relative w-full max-w-[500px] pt-[70px] mr-10">
-      <div class="absolute -top-[200px] -right-[300px] ">
+      <div class="absolute -top-[190px] -right-[300px] ">
         <video
           autoplay
           muted
@@ -56,7 +57,7 @@ import pokememoImg from "../assets/pokememo.webp"
           playsinline
           class="w-[500px] h-[500px] object-cover pointer-events-none"
         >
-          <source src="/videos/avatar-nuevo.webm" type="video/webm" />
+          <source src="/videos/avatar-waving.webm" type="video/webm" />
           Tu navegador no soporta el video.
         </video>
 
@@ -71,14 +72,15 @@ import pokememoImg from "../assets/pokememo.webp"
 </section>
 
 
+<main>
 
   <!-- Sección Proyectos -->
-  <section  style="animation-delay: 0.3s" class="px-4 py-8 max-w-[800px] mx-auto card animate-card">
+  <section  style="animation-delay: 0.3s" class="px-4 py-8 max-w-[800px] mx-auto card animate-card ">
     <h2 id="proyectos" class="text-[28px] sm:text-[35px] text-amarillo-texto border-b-4 border-white/60 pb-2 flex items-center font-ibm">
       Proyectos
       <Code class="w-[24px] ml-2 sm:w-[30px] mt-1 text-white" />
     </h2>
-
+    
     <div class="gap-x-[100px] gap-y-[50px] mt-10 place-items-center">
       <article>
         <Card title="Pokememo" img={pokememoImg.src} text="Pokememo es un juego de cartas estilo memorama, está hecho con javascript vanilla, CSS y HTML." link="https://fernan2323.github.io/Projecto_Final_Js/game.html" repo="https://github.com/Fernan2323/Projecto_Final_Js.git" >
@@ -86,19 +88,19 @@ import pokememoImg from "../assets/pokememo.webp"
             <Html class="w-[25px] h-[25px]" /> 
             <Css class="w-[25px] h-[25px]"  />
             <Javascript class="w-[25px] h-[25px]"  />
-
+            
           </div>
-          </Card>
-
-           <Card title="Este es el título" text="Esta es la descripción de la aplicación web presentada">
-            <div class="flex gap-4">
-              <Html class="w-[25px] h-[25px]" /> 
-              <Css class="w-[25px] h-[25px]"  />
-              <Javascript class="w-[25px] h-[25px]"  />
-  
-            </div>
         </Card>
-
+        
+        <Card title="Este es el título" text="Esta es la descripción de la aplicación web presentada">
+          <div class="flex gap-4">
+            <Html class="w-[25px] h-[25px]" /> 
+            <Css class="w-[25px] h-[25px]"  />
+            <Javascript class="w-[25px] h-[25px]"  />
+            
+          </div>
+        </Card>
+        
         <Card title="Este es el título" text="Esta es la descripción de la aplicación web presentada">
           <div class="flex gap-4 ">
             <Html class="w-[25px] h-[25px]" /> 
@@ -106,48 +108,49 @@ import pokememoImg from "../assets/pokememo.webp"
             <Javascript class="w-[25px] h-[25px]"  />
 
           </div>
-          </Card>
+        </Card>
       </article>
     </div>
   </section>
-
+  
   <!-- Sección AboutMe + Avatar -->
   <section style="animation-delay: 0.3s" class="w-full max-w-[1200px] flex flex-col items-center mt-[200px] px-4 min-h-[100vh] relative card animate-card">
     <AboutMe />
     
     <video
-      autoplay
-      muted
-      loop
-      playsinline
-      class="relative w-[1000px] object-contain pointer-events-none z-10"
+    autoplay
+    muted
+    loop
+    playsinline
+    class="relative w-[1000px] object-contain pointer-events-none z-10"
     >
-      <source src="/videos/avatar-reloj.webm" type="video/webm" />
-      Tu navegador no soporta el video.
-    </video>
-  </section>
+    <source src="/videos/avatar-clock.webm" type="video/webm" />
+    Tu navegador no soporta el video.
+  </video>
+</section>
 
-  <!-- Formulario de Contacto -->
-  <section style="animation-delay: 0.3s" id="contacto" class="h-[50vh] mt-[200px] card animate-card mb-[500px]">
-    <Contact />
-  </section>
+<!-- Formulario de Contacto -->
+<section style="animation-delay: 0.3s" id="contacto" class="h-[50vh] mt-[200px] card animate-card mb-[500px]">
+  <Contact />
+</section>
 
-  <!-- Sección Skills -->
-  <section>
-    <Skills />
-  </section>
+<!-- Sección Skills -->
+<section>
+  <Skills />
+</section>
+</main>
 
 </main>
 
-    
-    <style>
-      /* Evita márgenes negativos que puedan causar desbordamiento */
-      main {
-  width: 100%;
-  overflow-x: hidden;
-}
 
-      /* Animaciones más largas */
+<style>
+  /* Evita márgenes negativos que puedan causar desbordamiento */
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Animaciones más largas */
       @keyframes slideLeft {
         from {
           opacity: 0;

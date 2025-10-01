@@ -4,14 +4,18 @@ import Card from "../components/Card.astro";
 import Code from "./icons/Code.astro";
 import Skills from "./Skills.astro";
 import NavBar from "./NavBar.jsx";
-import bgImage from "../assets/bg-image-2.webp"
+import bgImage from "../assets/bg-image.jpg"
 import Html from './icons/Html.astro'
 import Css from './icons/Css.astro'
 import Arrow from './icons/Arrow.astro'
 import Javascript from './icons/Js.astro'
+import NextJs from './icons/NextJs.astro'
+import Strapi from './icons/Strapi.astro'
 import Contact from "./Contact.astro";
 import soyFernando from "../assets/soy-fernando.svg"
 import pokememoImg from "../assets/pokememo.webp"
+import ecommerceImg from "../assets/img-ecommerce.webp"
+import Tailwind from "./icons/Tailwind.astro";
 ---
 
 <main class="bg-gradient-to-br from-black via-neutral-950 to-zinc-950 w-full min-h-screen flex flex-col items-center pt-[140px]">
@@ -20,7 +24,7 @@ import pokememoImg from "../assets/pokememo.webp"
 <NavBar client:load />
 </header>
 
-<section class="w-full z-0 relative flex items-center justify-center h-[50vh] sm:h-[100vh]">
+<section class="w-full z-0 relative flex items-center justify-center h-[25vh] sm:h-[100vh]">
 
  <!-- Imagen de fondo -->
  <div class="absolute top-0 left-0 w-full h-[250px] sm:h-[700px] z-0">
@@ -75,7 +79,7 @@ import pokememoImg from "../assets/pokememo.webp"
 <main>
 
   <!-- Sección Proyectos -->
-  <section  style="animation-delay: 0.3s" class="px-4 py-8 max-w-[800px] mx-auto card animate-card ">
+  <section  style="animation-delay: 0.3s" class="px-4 py-8 max-w-[800px] mx-auto card mt-[200px] lg:mt-0 ">
     <h2 id="proyectos" class="text-[28px] sm:text-[35px] text-amarillo-texto border-b-4 border-white/60 pb-2 flex items-center font-ibm">
       Proyectos
       <Code class="w-[24px] ml-2 sm:w-[30px] mt-1 text-white" />
@@ -83,6 +87,15 @@ import pokememoImg from "../assets/pokememo.webp"
     
     <div class="gap-x-[100px] gap-y-[50px] mt-10 place-items-center">
       <article>
+        <Card title="PC Gamer Master Shop" img={ecommerceImg.src} text="Esta aplicación web es una tienda online de venta de hardware. Es una app full stack desarrollada con tecnologías como NextJs, Strapi y Tailwind entre otras, también utiliza una pasarela de pagos con Stripe."
+         link="https://ecommerce-pc-master-shop.vercel.app/" repo="https://github.com/Fernan2323/ecommerce-pc-master-shop.git">
+          <div class="flex gap-4">
+            <NextJs class="w-[25px] h-[25px]" /> 
+            <Tailwind class="w-[25px] h-[25px]"  />
+            <Strapi class="w-[25px] h-[25px]"  />            
+          </div>
+        </Card>
+
         <Card title="Pokememo" img={pokememoImg.src} text="Pokememo es un juego de cartas estilo memorama, está hecho con javascript vanilla, CSS y HTML." link="https://fernan2323.github.io/Projecto_Final_Js/game.html" repo="https://github.com/Fernan2323/Projecto_Final_Js.git" >
           <div class="flex gap-4">
             <Html class="w-[25px] h-[25px]" /> 
@@ -92,47 +105,41 @@ import pokememoImg from "../assets/pokememo.webp"
           </div>
         </Card>
         
-        <Card title="Este es el título" text="Esta es la descripción de la aplicación web presentada">
-          <div class="flex gap-4">
-            <Html class="w-[25px] h-[25px]" /> 
-            <Css class="w-[25px] h-[25px]"  />
-            <Javascript class="w-[25px] h-[25px]"  />
-            
-          </div>
-        </Card>
         
-        <Card title="Este es el título" text="Esta es la descripción de la aplicación web presentada">
-          <div class="flex gap-4 ">
-            <Html class="w-[25px] h-[25px]" /> 
-            <Css class="w-[25px] h-[25px]"  />
-            <Javascript class="w-[25px] h-[25px]"  />
-
-          </div>
-        </Card>
       </article>
     </div>
   </section>
   
-  <!-- Sección AboutMe + Avatar -->
-  <section style="animation-delay: 0.3s" class="w-full max-w-[1200px] flex flex-col items-center mt-[200px] px-4 min-h-[100vh] relative card animate-card">
-    <AboutMe />
-    
-    <video
+ <!-- Sección AboutMe + Avatar -->
+<section
+  style="animation-delay: 0.3s"
+  class="card animate-card relative flex min-h-screen w-full flex-col items-center px-4 mt-[100px] md:mt-[200px]"
+>
+  <!-- Componente AboutMe -->
+  <AboutMe />
+
+  <!-- Avatar Animado -->
+  <video
     autoplay
     muted
     loop
     playsinline
-    class="relative w-[1000px] object-contain pointer-events-none z-10"
-    >
+    class="hidden xl:block relative z-10 w-full max-w-[1000px] object-contain pointer-events-none"
+  >
     <source src="/videos/avatar-clock.webm" type="video/webm" />
     Tu navegador no soporta el video.
   </video>
 </section>
 
 <!-- Formulario de Contacto -->
-<section style="animation-delay: 0.3s" id="contacto" class="h-[50vh] mt-[200px] card animate-card mb-[500px]">
+<section
+  style="animation-delay: 0.3s"
+  id="contacto"
+  class="card animate-card mt-[100px] md:mt-[200px] md:mb-[500px] flex justify-center"
+>
   <Contact />
 </section>
+
 
 <!-- Sección Skills -->
 <section>
@@ -184,6 +191,7 @@ import pokememoImg from "../assets/pokememo.webp"
         }
       }
     
+      
       /* Secciones ocultas por defecto */
       .section {
         opacity: 0;
@@ -215,6 +223,8 @@ import pokememoImg from "../assets/pokememo.webp"
         transform: scale(0.85);
         transition: opacity 1s ease-out, transform 1s ease-out;
       }
+      
+      
     
       /* Hacer que las tarjetas se activen con el scroll */
       .card.visible {

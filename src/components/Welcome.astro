@@ -3,7 +3,9 @@ import btnStart from '../assets/boton-inicio-3.png';
 import Linkdin from './icons/Linkdin.astro';
 import GitHub from './icons/GitHub.astro';
 import SocialLink from './SocialLink.astro'
-const fernandev = '<FernanDev/>'
+import fernandevImage from "../assets/fernandev.png"
+import IconDownload from "../components/icons/IconDownload.astro"
+import Arrow from "../components/icons/Arrow.astro"
 ---
 <main class="bg-black min-h-screen relative" >
 <canvas id="matrixCanvas" class="absolute top-0 left-0 w-full h-full"></canvas>
@@ -13,32 +15,46 @@ const fernandev = '<FernanDev/>'
 <div class="min-h-screen relative z-10 flex">
   <header class="flex flex-col items-center justify-center w-full px-4 gap-10 sm:px-6 md:px-10 sm:gap-5">
   
-    <div class="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
+    <div class="flex flex-col md:flex-row items-center justify-center w-full">
       <!-- Sección título -->
       <section class="flex flex-col items-center mt-5 sm:mt-0 sm:items-start text-center sm:text-left">
-        <h1 class="text-verde-title font-semibold leading-tight text-[40px] sm:text-[40px] lg:text-[60px] 2xl:text-[80px] font-ibm">{fernandev}</h1>
-        <h2 class="text-verde-title font-semibold text-[24px] sm:text-[40px] lg:text-[60px] 2xl:text-[80px] leading-tight font-ibm">Desarrollador Web</h2>
-        <p class="text-white text-[16px] md:text-[24px] mt-2 sm:mt-2">Entusiasta de la tecnología,</p>
-        <p class="text-amarillo-texto text-[16px] md:text-[24px]">especialista en desarrollo de aplicaciones web.</p>
-      </section>
+  <div class="p-4 flex flex-col items-center sm:items-start space-y-2">
+    <img src={fernandevImage.src} alt="Logo" width="400" />
+
+    <div class="flex flex-col text-white text-[18px] md:text-[24px] space-y-1">
+      <p>Entusiasta de la tecnología,</p>
+      <p>especialista en desarrollo de aplicaciones web.</p>
+    </div>
+  </div>
+</section>
+
     
       <!-- Botón -->
-      <div class="w-[180px] md:w-[320px] hover:scale-110 transition flex justify-center sm:mt-0">
+      <div class="w-[180px] md:w-[320px] hover:scale-110 transition flex flex-col items-center justify-center sm:mb-[100px] ">
+        <Arrow class="w-[40px] h-[40px] sm:w-[80px] sm:h-[80px] text-white mt-4 animate-bounce-down mb-4" />
         <a class="text-white" href="/principal">
           <img src={btnStart.src} alt="botón de inicio" />
         </a>
       </div>
     </div>
   
-    <!-- Redes sociales -->
-    <nav class="flex flex-col sm:flex-row items-center justify-center gap-2 ">
-      <SocialLink href="https://ar.linkedin.com/">
-        <Linkdin class="w-5 h-5 sm:w-6 sm:h-6" /> LinkedIn
-      </SocialLink>
-      <SocialLink href="https://github.com/Fernan2323/">
-        <GitHub class="w-7 h-5 sm:w-6 sm:h-6" /> Github
-      </SocialLink>
-    </nav>
+   <!-- Redes sociales -->
+<nav class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:mt-[-80px] ">
+  <SocialLink href="https://www.linkedin.com/in/soria23">
+    <Linkdin class="w-5 h-5 sm:w-6 sm:h-6" /> LinkedIn
+  </SocialLink>
+
+  <SocialLink href="https://github.com/Fernan2323/">
+    <GitHub class="w-7 h-5 sm:w-6 sm:h-6" /> Github
+  </SocialLink>
+
+  <!-- Nuevo botón para descargar el CV -->
+ <SocialLink href="/fernando-soria-cv-nuevo.pdf" download>
+  Descargar CV
+  <IconDownload />
+ </SocialLink>
+</nav>
+
   
   </header>
   
